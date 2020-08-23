@@ -1,3 +1,3 @@
 declare interface IAppButton {
-    type: String
+    type?: String
 }
