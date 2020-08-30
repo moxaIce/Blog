@@ -1,15 +1,19 @@
 <template>
-    <input class="app-input" :placeholder="placeholder" :type="type"/>
+    <input class="app-input"
+           :placeholder="placeholder"
+           :type="type"
+           @input="$emit('update', $event.target.value)"/>
 </template>
 
 <script lang="ts">
 /**
  * @description input 组件
  */
-
+import {watchEffect} from 'vue';
 interface IProps {
     placeholder?: string
     type?: string
+    value?: string
 }
 
 export default {
@@ -17,8 +21,11 @@ export default {
         placeholder: String,
         type: String
     },
+
     setup(props: IProps) {
-        console.log(`props is`, props);
+        watchEffect(() => {
+            console.log(`props, props.value`, props.value)
+        })
     }
 }
 </script>

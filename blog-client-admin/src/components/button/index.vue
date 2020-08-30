@@ -1,5 +1,5 @@
 <template>
-  <button :class="['app-button', `app-button__${type}`]" type="button" v-on:click="emitEvent">
+  <button :class="['app-button', `app-button__${type}`]" type="button" @click="emitEvent">
     <slot></slot>
   </button>
 </template>

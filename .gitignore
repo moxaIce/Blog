@@ -3,3 +3,4 @@ node_modules
 dist
 *.local
 ./blog-client-admin/node_modules/*
+./blog-server-admin/node_modules/*
