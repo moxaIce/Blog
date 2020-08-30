@@ -9,7 +9,6 @@
 /**
  * @description input 组件
  */
-import {watchEffect} from 'vue';
 interface IProps {
     placeholder?: string
     type?: string
@@ -23,9 +22,7 @@ export default {
     },
 
     setup(props: IProps) {
-        watchEffect(() => {
-            console.log(`props, props.value`, props.value)
-        })
+
     }
 }
 </script>

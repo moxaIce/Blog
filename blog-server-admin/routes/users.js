@@ -1,24 +1,15 @@
-const router = require('koa-router')()
+const router = require('koa-router')();
+const {SuccessModel, ErrorModel} = require('../model/resModel');
 
 router.prefix('/users')
 
-router.get('/', function (ctx, next) {
-  ctx.body = 'this is a users response!'
-})
-
-router.get('/bar', function (ctx, next) {
-  ctx.body = 'this is a users/bar response'
-})
-
-router.post('/login', function (ctx, next) {
+router.post('/login', async function  (ctx, next) {
   const { userName, userPassword } = ctx.request.body;
 
-  console.log(userName, userPassword)
-  ctx.body = {
-    userName,
-    userPassword
+  if (userName === 'admin' && userPassword === '123456') {
+    ctx.body = new SuccessModel()
   }
-  // ctx.body = ctx.request.body
-  // ctx.body = 2
+
+  ctx.body = new ErrorModel(null, '用户名或者密码错误')
 })
 module.exports = router

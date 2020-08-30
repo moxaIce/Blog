@@ -6,15 +6,15 @@
 </template>
 
 <script lang="ts">
-export default {
-  props:{
-      label: String,
-      prop: String
-  },
-  setup(props: IFormItemsProps) {
-    console.log(`iformItem`, props);
-  },
-};
+  export default {
+    props:{
+        label: String,
+        prop: String
+    },
+    setup(props: IFormItemsProps) {
+        console.log(`iformItem`, props);
+    },
+  };
 </script>
 
 <style scoped lang="scss">

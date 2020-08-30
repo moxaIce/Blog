@@ -1,7 +1,7 @@
 <template>
   <div class="app-login">
     <div class="app-login__content">
-      <h3 class="login-title" @click="tst">管理仓库</h3>
+      <h3 class="login-title">管理仓库</h3>
       <app-form>
         <app-form-item label="账号">
           <app-input type="text" placeholder="user name" @update="(value) => {userName = value}" />
@@ -28,6 +28,7 @@ import AppButton from "@/components/button/index.vue";
 import router from "@/router/index.ts";
 import { postLogin } from "@/api/user/index.ts";
 
+
 export default {
   components: {
     AppForm,
@@ -38,28 +39,24 @@ export default {
   setup() {
     const userName: Ref<string> = ref('');
     const userPassword: Ref<string> = ref('');
-    console.log(`userName is`, userName);
-    console.log("userPassword is", userPassword);
+
     const login = async () => {
       let res = await postLogin({
         userName: userName.value,
         userPassword: userPassword.value,
       });
+      
       if (res) {
         router.push({
           name: "home",
         });
-        console.log(`resis `, res);
       }
     };
-    const tst = () => {
-        console.log('asd')
-    }
+
     return {
       userName,
       userPassword,
-      login,
-      tst
+      login
     };
   },
 };

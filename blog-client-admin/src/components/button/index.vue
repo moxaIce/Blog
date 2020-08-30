@@ -1,11 +1,11 @@
 <template>
-  <button :class="['app-button', `app-button__${type}`]" type="button" @click="emitEvent">
-    <slot></slot>
-  </button>
+    <button :class="['app-button', `app-button__${type}`]" type="button" >
+      <slot></slot>
+    </button>
 </template>
 
 <script lang="ts">
-import { SetupContext } from "vue";
+// import {SetupContext} from 'vue';
 
 export default {
   props: {
@@ -14,12 +14,9 @@ export default {
       default: "default",
     },
   },
-  setup: (props: IAppButton, context: SetupContext) => {
-    const emitEvent = () => {
-      context.emit("click");
-    };
+  setup: (props: IAppButton) => {
+
     return {
-      emitEvent,
     };
   },
 };
