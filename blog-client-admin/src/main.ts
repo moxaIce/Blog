@@ -4,4 +4,5 @@ import router from './router'
 import '@/styles/common.scss'
 
 
+
 createApp(App).use(router).mount('#app')

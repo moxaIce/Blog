@@ -48,7 +48,7 @@ export default {
       
       if (res) {
         router.push({
-          name: "home",
+          path: '/documentation'
         });
       }
     };

@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-
 export default {
   setup() {
-    return {}
+    return {
+    }
   },
 };
 </script>

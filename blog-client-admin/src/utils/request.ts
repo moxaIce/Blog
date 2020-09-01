@@ -3,7 +3,6 @@
  */
 
 import axios, {AxiosResponse} from 'axios';
-import Message from '@/components/message/index.ts';
 
 interface IResponse extends AxiosResponse {
     success?: boolean
@@ -18,10 +17,8 @@ const instance = axios.create({
 })
 
 instance.interceptors.response.use(function (response: IResponse) {
-    if (response.status === 200 && response.success) {
-        return response.data || {}
-    } else {
-        Message.error()
+    if (response.status === 200 && response.data.success) {
+        return response.data.data || {}
     }
 }, function (error: any) {
     return Promise.reject(error)

@@ -1,12 +1,14 @@
 <template>
-    <section>
-        home
-    </section>
+    <section> Home </section>
 </template>
 
 <script lang="ts">
 export default {
-    
+    components: {
+    },
+    setup(){
+        return {}
+    }
 }
 </script>
 
