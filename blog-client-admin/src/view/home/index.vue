@@ -14,7 +14,19 @@
             const el: Ref<HTMLElement> = ref(document.createElement('div'));
 
             onMounted(() => {
+
                 initGrid(el.value,{
+                    toolbar: {
+                        buttons: [
+                            {
+                                type: 'new',
+                                text: '新建',
+                                handleClick () {
+
+                                }
+                            }
+                        ]
+                    },
                     columns: [
                         {title: '标题', field: 'title'},
                         {title: '内容', field: 'content'},
@@ -42,5 +54,6 @@
 <style scoped lang="scss">
 .home-body{
     padding: 30px;
+    background-color: #fff;
 }
 </style>

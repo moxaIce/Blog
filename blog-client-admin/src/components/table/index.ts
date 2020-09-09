@@ -4,7 +4,6 @@
 
 import {createApp} from 'vue';
 import Table  from './index.vue';
-import {ComponentOptionsWithObjectProps} from '@vue/runtime-core'
 
 export interface IDefaultColumnsConfig {
     titleAlign?: string,
@@ -16,24 +15,20 @@ export interface IColumns extends IDefaultColumnsConfig{
     title: string
 }
 
+export interface IToolbar {
+    buttons: any[]
+}
+
 export interface IConfig  {
     gridData: any[],
     columns: IColumns[],
-    [key: string]:  any[] | IColumns[];
+    toolbar: IToolbar,
+    [key: string]:  any[] | IColumns[] | IToolbar;
 }
 
-const defaultColumnConfig: IDefaultColumnsConfig = {
-    titleAlign: 'center',
-    columnAlign: 'center'
-}
+
 
 const initGrid = (elements: HTMLElement, config:IConfig) => {
-    // const resultColumns =  config.columns.map(item => {
-    //     return Object.assign(defaultColumnConfig, item)
-    // })
-    //
-    // const props: IConfig = Object.assign(config, {columns: resultColumns})
-
     return createApp(Table, config).mount(elements);
 }
 
