@@ -15,8 +15,7 @@
             </tr>
         </thead>
         <tbody>
-
-        <tr v-for="(item, index) in gridData" :key="index" class="app-row">
+        <tr v-for="(item, index) in gridData" :key="index" class="app-tbody-tr">
             <td v-for="column in columnFields"
                 :key="column"
                 :style="{'text-align': column.columnAlign || defaultColumnsConfig.columnAlign}">
@@ -35,6 +34,7 @@
     import {computed, WritableComputedRef, reactive, Ref, ref} from 'vue';
     import {IDefaultColumnsConfig} from './index'
     import AppButton from '@/components/button/index.vue';
+    import { IColumns } from './index';
 
     const defaultColumnConfig: IDefaultColumnsConfig = {
         titleAlign: 'center',
@@ -71,7 +71,6 @@
             const defaultColumnsConfig = reactive(defaultColumnConfig);
             const buttons: Ref<any[]> = ref([])
             const initValue = () => {
-                console.log('toolbar', props)
                 buttons.value = props.toolbar.buttons || [];
             }
 
@@ -79,7 +78,12 @@
 
             const columnFields: WritableComputedRef<any[]> = computed({
                 get: () => {
-                    return props.columns
+                    return props.columns.map((item: IColumns) => {
+                        return {
+                            field: item.field,
+                            columnAlign: item.columnAlign
+                        }
+                    })
                 },
                 set: () => {
                     return console.error('无法设置')
@@ -120,5 +124,10 @@
             padding:7px 10px 6px;
             border-bottom: 1px solid #f0f0f0;
         }
+    }
+    .app-tbody-tr{
+        height: 34px;
+        line-height: 34px;
+        border-bottom: 1px solid #f0f0f0;
     }
 </style>

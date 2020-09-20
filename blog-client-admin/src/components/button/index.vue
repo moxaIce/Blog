@@ -48,7 +48,7 @@ export default {
   border: 1px solid #d9d9d9;
   &:hover,
   &:active{
-      color: #40a9ff;
+    color: #40a9ff;
     background: #fff;
     border-color: #40a9ff;
   }
