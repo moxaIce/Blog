@@ -4,6 +4,7 @@ import Login from '../view/login/index.vue';
 import Home from '../view/home/index.vue';
 import List from '../view/list/index.vue';
 import Layout from '../view/layout/index.vue';
+import Blog from '../view/home/new.vue';
 const routerHistory = createWebHashHistory();
 
 export const routerNav = [
@@ -37,6 +38,13 @@ export const routerMap = [
         component: Layout,
         redirect: '/home',
         children: routerNav
+    },
+    {
+        path: '/blog/:id',
+        component: Blog,
+        meta: {
+            title: '新建'
+        }
     }
 
 ]

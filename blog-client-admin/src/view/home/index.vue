@@ -7,6 +7,7 @@
 <script lang="ts">
     import {ref, onMounted, Ref} from 'vue';
     import initGrid from "@/components/table";
+    import router from "@/router/index.ts";
     export default {
         components: {
         },
@@ -22,7 +23,9 @@
                                 type: 'new',
                                 text: '新建',
                                 handleClick () {
-
+                                    router.push({
+                                        path: '/blog/new'
+                                    })
                                 }
                             }
                         ]

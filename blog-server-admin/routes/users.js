@@ -6,9 +6,8 @@ router.prefix('/users')
 
 router.post('/login', async function  (ctx, next) {
   const { userName, userPassword } = ctx.request.body;
-  const rows = login(userName, userPassword);
-
-  if (userName === 'admin' && userPassword === '123456') {
+  const rows = await login(userName, userPassword);
+  if (Object.keys(rows).length) {
     ctx.body = new SuccessModel(true)
     return
   }

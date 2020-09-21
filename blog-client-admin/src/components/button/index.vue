@@ -13,6 +13,7 @@ export default {
       type: String,
       default: "default",
     },
+
   },
   setup: (props: IAppButton) => {
 
@@ -40,7 +41,8 @@ export default {
   border-radius: 2px;
   color: rgba(0, 0, 0, 0.85);
   width: 100%;
-  outline-width: 0;;
+  outline-width: 0;
+    margin-bottom: 10px;
 }
 .app-button__default {
   background: #fff;
