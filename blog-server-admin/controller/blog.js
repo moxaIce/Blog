@@ -16,6 +16,18 @@ const createBlog = async (blogData) => {
     };
 }
 
+const fetchList = async (listData) => {
+    const { pageSize, current } = listData;
+    const keyWord = xss(listData.keyWord);
+    const sql = `
+        select * from blogs
+    `
+    
+    const rows = await exec(sql);
+    return rows || [];
+}
+
 module.exports = {
-    createBlog
+    createBlog,
+    fetchList
 }

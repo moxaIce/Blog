@@ -7,6 +7,10 @@ interface ICreateBlogParams {
 }
 
 export const createBlog = (data: ICreateBlogParams) => {
-    console.log(`data is`, data);
+
     return request.post('/blogs/createBlog', data)
+}
+
+export const getList = () => {
+    return request.get('/blogs/getList')
 }

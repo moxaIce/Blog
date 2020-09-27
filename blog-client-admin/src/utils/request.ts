@@ -28,6 +28,11 @@ const post = (url: string, data?: any): any => {
     return instance.post(url, data)
 }
 
+const get = (url: string, data?: any): any => {
+    return instance.get(url, data);
+}
+
 export default {
-    post
+    post,
+    get
 }

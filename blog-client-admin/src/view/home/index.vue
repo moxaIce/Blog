@@ -8,50 +8,41 @@
     import {ref, onMounted, Ref} from 'vue';
     import initGrid from "@/components/table";
     import router from "@/router/index.ts";
+    import { getList } from '@/api/blogs/index.ts';
     export default {
-        components: {
-        },
         setup(){
             const el: Ref<HTMLElement> = ref(document.createElement('div'));
-
-            onMounted(() => {
-
-                initGrid(el.value,{
-                    toolbar: {
-                        buttons: [
-                            {
-                                type: 'new',
-                                text: '新建',
-                                handleClick () {
-                                    router.push({
-                                        path: '/blog/new'
-                                    })
+            const fetchList = async () => {
+                let res = await getList();
+                
+                if (res) {
+                    initGrid(el.value, {
+                        toolbar: {
+                            buttons: [
+                                {
+                                    type: 'new',
+                                    text: '新建',
+                                    handleClick () {
+                                        router.push({
+                                            path: '/blog/new'
+                                        })
+                                    }
                                 }
-                            }
-                        ]
-                    },
-                    columns: [
-                        {title: '标题', field: 'title'},
-                        {title: '内容', field: 'content'},
-                        {title: '创建时间', field: 'createTime'},
-                        {title: '更新时间', field: 'updateTime'}
-                    ],
-                    gridData: [
-                        {
-                            title: '我是一只小小·鸟',
-                            content: '怎么飞也飞不高',
-                            createTime: '2020-09-06',
-                            updateTime: '2020-11-04'
+                            ]
                         },
-                        {
-                            title: '我是一只小小·鸟',
-                            content: '怎么飞也飞不高',
-                            createTime: '2020-09-06',
-                            updateTime: '2020-11-04'
-                        }
-                    ]
-                })
-            })
+                        columns: [
+                            {title: '标题', field: 'title'},
+                            {title: '内容', field: 'content'},
+                            {title: '创建时间', field: 'createTime'},
+                            {title: '更新时间', field: 'updateTime'}
+                        ],
+                        gridData: res
+                    })
+                }
+            }
+            onMounted(() => {
+                fetchList();
+            });
 
             return {
                 el
